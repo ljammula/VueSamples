@@ -1,0 +1,58 @@
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Vue3 -->
+  <script src="http://unpkg.com/vue@next"></script>
+
+  <!-- Since there is already a rich ecosystem of ajax libraries    -->
+  <!-- and collections of general-purpose utility methods, Vue core -->
+  <!-- is able to remain small by not reinventing them. This also   -->
+  <!-- gives you the freedom to use what you're familiar with.      -->
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+</head>
+
+<body>
+
+  <div id="watch-example">
+    <p>
+      Ask a yes/no question:
+      <input v-model="question" />
+    </p>
+    <p>{{ answer }}</p>
+  </div>
+
+  <script>
+    const WatchExample = {
+      data() {
+        return {
+          question: '',
+          answer: 'Questions usually contain a question mark. ;-)'
+        }
+      },
+      watch: {
+        // whenever question changes, this function will run
+        question(newQuestion, oldQuestion) {
+          if (newQuestion.indexOf('?') > -1) {
+            this.getAnswer()
+          }
+        }
+      },
+      methods: {
+        getAnswer() {
+          this.answer = 'Thinking...'
+          axios
+            .get('https://yesno.wtf/api')
+            .then(response => {
+              this.answer = response.data.answer
+            })
+            .catch(error => {
+              this.answer = 'Error! Could not reach the API. ' + error
+            })
+        }
+      }
+    }
+
+    const watchExampleVM = Vue.createApp(WatchExample).mount('#watch-example')
+  </script>
+
+</body>

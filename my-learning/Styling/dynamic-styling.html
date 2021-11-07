@@ -1,0 +1,47 @@
+<head>
+  <link rel="stylesheet" href="style.css" />
+  <script src="http://unpkg.com/vue@next"></script>
+</head>
+<body>
+  <section id="styling">
+    <div
+      class="demo"
+      :class="{active:boxASelected}"
+      @click="boxSelected('A')"
+    ></div>
+    <div
+      class="demo"
+      :class="{active:boxBSelected}"
+      @click="boxSelected('B')"
+    ></div>
+    <div
+      class="demo"
+      :class="{active:boxCSelected}"
+      @click="boxSelected('C')"
+    ></div>
+  </section>
+  <script>
+    const DynamicStyling = Vue.createApp({
+      data: function () {
+        return {
+          boxASelected: false,
+          boxBSelected: false,
+          boxCSelected: false,
+        };
+      },
+      methods: {
+        boxSelected(boxName) {
+          const that = this;
+          if (boxName === "A") {
+            that.boxASelected = !that.boxASelected;
+          } else if (boxName === "B") {
+            that.boxBSelected = !that.boxBSelected;
+          } else {
+            that.boxCSelected = !that.boxCSelected;
+          }
+        },
+      },
+    });
+    DynamicStyling.mount("#styling")
+  </script>
+</body>

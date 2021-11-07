@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+  <script src="http://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="bind-attribute">
+    <span v-bind:title = "message">
+      Hover your mouse over me for a few seconds to see my dynamically bound title!
+    </span>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    const AttributeBinding = {
+      data() {
+        return {
+          message: "using v-bind to change title",
+        };
+      }
+    };
+
+    app = createApp(AttributeBinding);
+    app.mount("#bind-attribute");
+  </script>
+</body>

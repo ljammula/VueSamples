@@ -1,0 +1,44 @@
+<head>
+  <!-- Vue3 -->
+  <script src="http://unpkg.com/vue@next"></script>
+  <style>
+    .demo {
+      font-family: sans-serif;
+      border: 1px solid #eee;
+      border-radius: 2px;
+      padding: 20px 30px;
+      margin-top: 1em;
+      margin-bottom: 40px;
+      user-select: none;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+<body>
+    <div class="demo" id="vue-binding">
+        <input type="text" v-model="userInput"/>
+        <button @click="setText">Set Text</button>
+        <button @click="clearText">Clear Text</button>
+        <p>{{message}}</p>
+    </div>
+    
+    <script>
+        const App = Vue.createApp({
+            data: function(){
+                return {
+                    userInput: "Enter text...",
+                    message: "Vue is Awesome - "
+                }
+            },
+            methods:{
+                setText(){
+                    this.message += this.userInput
+                },
+                clearText(){
+                    this.message = ''
+                }
+            }
+        });
+        App.mount("#vue-binding");
+    </script>
+</body>

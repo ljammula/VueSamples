@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+  <script src="http://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="counter">{{ counter }}</div>
+
+  <script>
+    const { createApp } = Vue;
+
+    const Counter = {
+      data() {
+        return {
+          counter: 140,
+        };
+      },
+    };
+
+    app = createApp(Counter);
+    app.mount("#counter");
+  </script>
+</body>
+
+<!-- https://v3.vuejs.org/guide/migration/global-api.html#global-api -->

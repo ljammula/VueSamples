@@ -1,0 +1,45 @@
+<head>
+  <meta charset="utf-8" />
+
+  <!-- Vue3 -->
+  <script src="http://unpkg.com/vue@next"></script>
+  <style>
+    .demo {
+      font-family: sans-serif;
+      border: 1px solid #eee;
+      border-radius: 2px;
+      padding: 20px 30px;
+      margin-top: 1em;
+      margin-bottom: 40px;
+      user-select: none;
+      overflow-x: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="text-area-demo" class="demo">
+    <span>Multiline Message: </span>
+    <p>{{ messageTextArea }}</p>
+    <br/>
+    <textarea v-model="messageTextArea" placeholder="Add Multiple Lines" ></textarea>
+    <br/>
+    <br/>
+    <span>Single Line Message:</span>
+    <p>{{message}}</p>
+    <input v-model="message" placeholder="Single line text"/> 
+  </div>
+
+  <script>
+    const TextAreaExample = {
+      data() {
+        return {
+          messageTextArea: "",
+          message: ""
+        };
+      },
+    };
+
+    const textAreaExampleVm = Vue.createApp(TextAreaExample).mount("#text-area-demo");
+  </script>
+</body>

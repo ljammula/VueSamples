@@ -1,0 +1,31 @@
+<head>
+  <!-- development version, includes helpful console warnings -->
+  <script src="http://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+  <div id="app">
+    <greeting></greeting>
+    <greeting></greeting>
+    <greeting></greeting>
+  </div>
+
+  <script>
+    var app = Vue.createApp({});
+    app.component("greeting", {
+      data: function () {
+        return {
+          name: "",
+        };
+      },
+      template: `<div>
+                    <label>
+                        What's your name?
+                        <input v-model="name" placeholder="Your name..." />
+                    </label>
+                    <span>Hello {{ name }}</span>
+                </div>`,
+    });
+    app.mount('#app')
+  </script>
+</body>
