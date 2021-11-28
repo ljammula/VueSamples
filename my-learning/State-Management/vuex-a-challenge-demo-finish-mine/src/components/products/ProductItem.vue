@@ -1,5 +1,5 @@
 <template>
-  <li class="product">
+  <li>
     <div class="product__data">
       <div class="product__image">
         <img :src="image" :alt="title" />
@@ -20,11 +20,10 @@
 
 <script>
 export default {
-  inject: ['addProductToCart'],
   props: ['id', 'image', 'title', 'price', 'description'],
   methods: {
     addToCart() {
-      this.addProductToCart({
+      this.$store.dispatch('cartModule/addProductToCart', {
         id: this.id,
         image: this.image,
         title: this.title,
